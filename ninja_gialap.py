@@ -60,8 +60,14 @@ if not res_t:
     sys.exit(1)
 HEX_TRANS_ID, DRAW_ID = res_t
 
-# Ma khach hang tu mau anh gui
-BGT_ID = "445226523"
+# 2.2 Get BGT_ACCOUNT_ID from CUSTOMER_ACCOUNT
+cur.execute("SELECT BGT_ACCOUNT_ID FROM VIETLOTTSMS_MOBI.CUSTOMER_ACCOUNT WHERE PHONE_NUMBER=:1 AND ROWNUM=1", [MSISDN])
+res_bgt = cur.fetchone()
+if not res_bgt:
+    print(f"Error: Không tìm thấy BGT_ACCOUNT_ID cho MSISDN {MSISDN}.")
+    sys.exit(1)
+BGT_ID = str(res_bgt[0])
+print(f"[DB] BGT_ACCOUNT_ID = {BGT_ID}")
 
 # 2.2 Get Draw Info
 cur.execute(f"SELECT CODE, TO_CHAR(DRAW_AT, 'YYMMDD'), TO_CHAR(DRAW_AT, 'YYYYMMDD'), WINNING_PANEL FROM VIETLOTTSMS_MOBI.{g['table']} WHERE ID=:1", [DRAW_ID])
