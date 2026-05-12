@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.env
+.venv
+env/
+venv/
+*.pyc
+
+# Debug / temp files
+*.png
+*.html
+dom_*.html
+debug_*.png
+
+# Scratch / temp
+scratch/
+
+# State files (runtime, không cần commit)
+simulation_state.json
+pending_notification.json
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Exports (CSV generated files - bỏ qua hoặc giữ tùy ý)
+# exports/
